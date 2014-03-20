@@ -5,7 +5,7 @@ body {
 
 @media (max-width: 979px) {
   body {
-    padding-top: 0;
+    padding-top: 60px;
   }
 }
 
@@ -111,7 +111,7 @@ body {
 .content-holder {
   position: absolute;
   left: 50%;
-  top: 30%;
+  top: 50%;
   border: 2px solid;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
