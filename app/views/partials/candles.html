@@ -1,0 +1,46 @@
+<div ng-include="'partials/navbar'"></div>
+
+<div class="row">
+	<div class="col-md-3">
+		<button class="btn btn-default" ng-click="showDialog=true">הדלק נר</button>
+	</div>
+	<div class="col-md-3 pull-left lead">
+		<header>הודלקו {{candles.length}} נרות לזכרה</header>
+	</div>
+</div>
+
+<div ng-repeat="candle in candles">
+	<span ng-if="$index % 4 === 0">
+		<div class="row">
+			<div class="col-md-3" ng-if="candles[$index]">
+				<candle name="candles[$index].name" date="candles[$index].date" content="candles[$index].content"/>
+			</div>
+			<div class="col-md-3" ng-if="candles[$index+1]">
+				<candle name="candles[$index+1].name" date="candles[$index+1].date" content="candles[$index+1].content"/>
+			</div>
+			<div class="col-md-3" ng-if="candles[$index+2]">
+				<candle name="candles[$index+2].name" date="candles[$index+2].date" content="candles[$index+2].content"/>
+			</div>
+			<div class="col-md-3" ng-if="candles[$index+3]">
+				<candle name="candles[$index+3].name" date="candles[$index+3].date" content="candles[$index+3].content"/>
+			</div>
+		</div>
+	</span>
+</div>
+
+<modal-dialog show="showDialog">
+	<div>
+		<form name="form" novalidate>
+			<div class="form-group">
+				<input class="form-control" type="text" name="name" ng-model="newCandle.name" placeholder="הקלד את שמך" required>
+			</div>
+			<div class="form-group">
+				<textarea class="form-control" name="content" rows="4" ng-model="newCandle.content" placeholder="אפשר להוסיף מספר מילים...">
+				</textarea>
+			</div>
+			<button class="btn btn-default" ng-disabled="form.$invalid" ng-click="addCandle()">
+				הדלק נר
+			</button>
+		</form>
+	</div>
+</modal-dialog>
