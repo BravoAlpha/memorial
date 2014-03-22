@@ -9,23 +9,10 @@
 	</div>
 </div>
 
-<div ng-repeat="candle in candles">
-	<span ng-if="$index % 4 === 0">
-		<div class="row">
-			<div class="col-md-3" ng-if="candles[$index]">
-				<candle name="candles[$index].name" date="candles[$index].date" content="candles[$index].content"/>
-			</div>
-			<div class="col-md-3" ng-if="candles[$index+1]">
-				<candle name="candles[$index+1].name" date="candles[$index+1].date" content="candles[$index+1].content"/>
-			</div>
-			<div class="col-md-3" ng-if="candles[$index+2]">
-				<candle name="candles[$index+2].name" date="candles[$index+2].date" content="candles[$index+2].content"/>
-			</div>
-			<div class="col-md-3" ng-if="candles[$index+3]">
-				<candle name="candles[$index+3].name" date="candles[$index+3].date" content="candles[$index+3].content"/>
-			</div>
-		</div>
-	</span>
+<div class="row" ng-repeat="row in candles | orderBy:'-date' | inSlicesOf:4">
+	<div class="col-md-3" ng-repeat="candle in row">
+		<candle name="candle.name" date="candle.date" content="candle.content"/>
+	</div>
 </div>
 
 <modal-dialog show="showDialog">
