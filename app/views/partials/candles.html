@@ -18,12 +18,15 @@
 <modal-dialog show="showDialog">
 	<div>
 		<form name="form" novalidate>
-			<div class="form-group">
-				<input class="form-control" type="text" name="name" ng-model="newCandle.name" placeholder="הקלד את שמך" required focus-when="showDialog">
+			<div class="form-group" ng-class="{'has-error': form.name.$dirty && form.name.$invalid}">
+				<input class="form-control" type="text" name="name" ng-model="newCandle.name" placeholder="הקלד את שמך" required ng-maxlength="20" focus-when="showDialog">
+				<p class="help-block" ng-show="form.name.$dirty && form.name.$error.required">שדה זה חייב להכיל ערך</p>
+				<p class="help-block" ng-show="form.name.$dirty && form.name.$error.maxlength">ניתן להזין לכל היותר עשרים תווים</p>
 			</div>
-			<div class="form-group">
-				<textarea class="form-control" name="content" rows="4" ng-model="newCandle.content" placeholder="אפשר להוסיף מספר מילים...">
+			<div class="form-group" ng-class="{'has-error': form.content.$dirty && form.content.$invalid}">
+				<textarea class="form-control" name="content" rows="4" ng-model="newCandle.content" placeholder="אפשר להוסיף מספר מילים..." ng-maxlength="80">
 				</textarea>
+				<p class="help-block" ng-show="form.content.$dirty && form.content.$error.maxlength">ניתן להזין לכל היותר שמונים תווים</p>
 			</div>
 			<button class="btn btn-default" ng-disabled="form.$invalid" ng-click="addCandle()">
 				הדלק נר
