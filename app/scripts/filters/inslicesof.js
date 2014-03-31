@@ -1,10 +1,11 @@
 'use strict';
 
 // References:
-//https://groups.google.com/forum/#!topic/angular/LjwlVYMulN8
-//By Rafael Dipold: http://jsbin.com/isagac/1/edit
-angular.module('memorialApp').filter('inSlicesOf', function($rootScope) {
-	return function(items, count) {
+// https://groups.google.com/forum/#!topic/angular/LjwlVYMulN8
+// By Rafael Dipold: http://jsbin.com/isagac/1/edit
+// Slightly modified to use memoize instead of $rootScope.
+angular.module('memorialApp').filter('inSlicesOf', function() {
+	return _.memoize(function(items, count) {
 		if (!count) {
 			count = 3;
 		}
@@ -23,13 +24,7 @@ angular.module('memorialApp').filter('inSlicesOf', function($rootScope) {
 
 			array[chunkIndex].push(items[i]);
 		}
-
-		if (angular.equals($rootScope.arrayinSliceOf, array)){
-			return $rootScope.arrayinSliceOf;
-		} else {
-			$rootScope.arrayinSliceOf = array;
-		}
 			
 		return array;
-	};
+	});
 });
