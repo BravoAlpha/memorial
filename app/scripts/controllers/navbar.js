@@ -7,7 +7,7 @@ angular.module('memorialApp')
       'link': '/about'
     }, {
       'title': 'דברים שבלב',
-      'link': '/memories'
+      'link': '/eulogies'
     }, {
       'title': 'תמונות',
       'link': '/pictures'

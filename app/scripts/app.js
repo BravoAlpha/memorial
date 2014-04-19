@@ -13,6 +13,10 @@ angular.module('memorialApp', [
         templateUrl: 'partials/candles',
         controller: 'CandlesCtrl'
       })
+      .when('/eulogies', {
+        templateUrl: 'partials/eulogies',
+        controller: 'EulogiesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
